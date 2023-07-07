@@ -52,6 +52,13 @@ pipeline {
                 }
             }
         }
+  stage('running container') {
+    steps {
+        script {
+            sh 'docker run -d -p -t ${DOCKER_IMAGE} .'
+            }
+        }
+      }
     }
 }
 
