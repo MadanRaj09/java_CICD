@@ -7,9 +7,7 @@ pipeline {
    }
   environment {
         DOCKER_IMAGE = "madan09/java_cicd:${BUILD_NUMBER}"
-        BUILD_NUM="${BUILD_NUMBER}"
-        PRE_BUILD_NUM= (BUILD_NUM as int) - 1
-      }
+        }
   stages {
     stage('Checkout') {
       steps {
@@ -65,7 +63,7 @@ pipeline {
                     git config user.email "madan@gmail.com"
                     git config user.name "Madan raj"
                     BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s/${PRE_BUILD_NUM}/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+                    sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
                     git add spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${github}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
