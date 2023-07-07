@@ -52,13 +52,6 @@ pipeline {
                 }
             }
         }
-  stage('running container') {
-    steps {
-        script {
-            sh ' docker run -d -p 8001:8001 --name javaapp ${DOCKER_IMAGE} '
-            }
-        }
-      }
     }
 }
 
