@@ -44,10 +44,10 @@ pipeline {
            steps{
                 script{
                     withCredentials([string(credentialsId: 'dockerhub_pass', variable: 'dockerpasswd')]) {
-                      //sh ' docker login -u madan09 -p ${dockerpasswd} '
+                      sh ' docker login -u madan09 -p ${dockerpasswd} '
                     }
                     echo ' Passed '
-                    // sh 'docker push ${DOCKER_IMAGE}'
+                    sh 'docker push ${DOCKER_IMAGE}'
                     
                 }
             }
