@@ -8,7 +8,6 @@ ARG artifact=target/spring-boot-web.jar
 WORKDIR /opt/app
 
 COPY ${artifact} app.jar
-
-
+EXPOSE 8000
 # This should not be changed
 ENTRYPOINT ["java","-jar","app.jar"]
