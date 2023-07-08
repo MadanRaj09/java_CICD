@@ -46,7 +46,7 @@ pipeline {
                     withCredentials([string(credentialsId: 'dockerhub_pass', variable: 'dockerpasswd')]) {
                       sh ' docker login -u madan09 -p ${dockerpasswd} '
                     }
-                    echo ' Passed '
+                    echo ' Pushing the image '
                     sh 'docker push ${DOCKER_IMAGE}'
                     
                 }
