@@ -44,10 +44,10 @@ pipeline {
            steps{
                 script{
                     withCredentials([string(credentialsId: 'dockerhub_pass', variable: 'dockerpasswd')]) {
-                      sh ' docker login -u madan09 -p ${dockerpasswd} '
+                     //sh ' docker login -u madan09 -p ${dockerpasswd} '
                     }
                     echo ' Pushing the image '
-                    sh 'docker push ${DOCKER_IMAGE}'
+                    //sh 'docker push ${DOCKER_IMAGE}'
                     
                 }
             }
@@ -63,7 +63,7 @@ pipeline {
                     git config user.email "madan@gmail.com"
                     git config user.name "Madan raj"
                     BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s/4/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
+                    sed -i "s/10/${BUILD_NUMBER}/g" spring-boot-app-manifests/deployment.yml
                     git add spring-boot-app-manifests/deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${github}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
